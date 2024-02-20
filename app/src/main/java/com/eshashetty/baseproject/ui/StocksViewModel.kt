@@ -18,8 +18,8 @@ class StocksViewModel @Inject constructor(
     private val stocksRepository: StocksRepository
 ): ViewModel() {
 
-    private val _stocks = MutableStateFlow<List<Stocks>?>(null)
-    val stocks: Flow<List<Stocks>> get() = _stocks.filterNotNull()
+    private val _stocks = MutableStateFlow<Stocks?>(null)
+    val stocks: Flow<Stocks> get() = _stocks.filterNotNull()
 
     fun fetchStocks() {
         viewModelScope.launch {

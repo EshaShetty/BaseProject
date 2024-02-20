@@ -1,16 +1,15 @@
 package com.eshashetty.baseproject.data.model
 
 import com.eshashetty.baseproject.network.model.StockResponse
+import com.eshashetty.baseproject.network.model.StocksResponse
 import javax.inject.Inject
 
 data class Stocks(
-    val ticker : String,
-    val name : String,
+    val stocks : List<Stock>
 ) {
     class Factory @Inject constructor() {
-        fun invoke(stockResponse: StockResponse) = Stocks (
-            ticker = stockResponse.ticker,
-            name = stockResponse.name
+        operator fun invoke(stocksResponse: StocksResponse, stockFactory: Stock.Factory) = Stocks(
+            stocks = stocksResponse.stocks.map { stockFactory(it) },
         )
     }
 }

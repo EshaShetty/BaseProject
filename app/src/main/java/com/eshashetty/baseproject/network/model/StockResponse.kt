@@ -8,7 +8,7 @@ data class StockResponse(
     @SerializedName("name")
     val name : String,
     @SerializedName("currency")
-    val currency: Int,
+    val currency: String,
     @SerializedName("current_price_cents")
     val priceCent: Int,
     @SerializedName("quantity")
